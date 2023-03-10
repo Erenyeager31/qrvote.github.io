@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>QR VOTE</title>
+        <link rel="stylesheet" href="Mainpage.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/309cf469ef.js" crossorigin="anonymous"></script>
+<head>
+
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        font-family: montserrat;
+        box-sizing: border-box;
+    }
+
+    body {
+        min-height: 100vh;
+        /*background-image: linear-gradient(120deg, #3498db, #8e44ad);*/
+    }
+
+    .details {
+        width: 360px;
+        background: #f1f1f1;
+        background-color: #f1f1f1;
+        height: 580px;
+        padding: 80px 40px;
+        border-radius: 10px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-top: 5%;
+        transform: translate(-50%, -50%);
+    }
+
+    .details p{
+        text-align: center;
+        font-style: italic;
+        color: #afa3a3;
+    }
+
+    .details h1 {
+        text-align: center;
+        margin-bottom: 35px;
+        background: #f1f1f1;
+    }
+
+    .textb {
+        border-bottom: 2px solid #adadad;
+        position: relative;
+        margin: 30px 0;
+        background: #f1f1f1;
+
+    }
+
+    .textb input {
+        font-size: 15px;
+        color: #333;
+        border: none;
+        width: 100%;
+        margin-right: 10%;
+        outline: none;
+        background: none;
+        padding: 0 5px;
+        height: 40px;
+    }
+
+    .scrolldiv {
+        width: 300px;
+        height: 300px;
+        margin-top: 20px;
+        overflow: hidden;
+        overflow-y: scroll;
+        background: #f1f1f1;
+    }
+
+    
+
+    .sbtn{
+            display: block;
+            margin-top: 10px;
+            border-radius: 10px;
+            width: 100%;
+            height: 50px;
+            border: none;
+            /*padding: auto;*/
+            background: linear-gradient(120deg,#3498db,#8e44ad,#6c34db);
+            background-size: 200%;
+            color: #fff;
+            outline: none;
+            cursor: pointer;
+            transition: .5s;
+        }
+
+        .sbtn:hover{
+            background-position: right;
+        }
+
+
+        @media screen and (max-width: 600px) {    
+            .details {
+                width: 300px;
+                background: #f1f1f1;
+                background-color: #f1f1f1;
+                height: 550px;
+                padding: 50px 20px;
+                border-radius: 10px;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin-top: 10%;
+                transform: translate(-50%, -50%);
+            }
+
+            .scrolldiv {
+                width: 250px;
+                height: 300px;
+                margin-top: 10px;
+                overflow: hidden;
+                overflow-y: scroll;
+                background: #f1f1f1;
+            }
+            
+        }
+    
+</style>
+
+<body>
+
+    <div class="header">
+        <h2 class="logo">Q-VOTE</h2>
+        <input type="checkbox" id="check">
+        <label for="check" class="menu-button"> 
+            <i class="fa-solid fa-ellipsis"></i> 
+        </label>
+        
+        <ul class="menu">
+            <a href="index.html">Home</a>   
+            <a href="opt_verify.html">Vote</a>
+            <a href="candidate.html">Candidate Registration</a>
+            <a href="#">CAndidate Info</a>
+            <a href="#">Contact</a>
+            <a href="chart33.html">Analysis</a>
+
+            <label for="check" class="hide-menu-button"> 
+                <i class="fa-solid fa-times"></i> 
+            </label>
+        </ul>     
+    </div>
+    <form action="" class="details">
+        <h1>ENTER DETAILS</h1>
+        <p style="background: #f1f1f1;">Please Enter your details In-order to Register yourself as Candidate</p>
+
+        <div class="scrolldiv">
+
+            <div class="scrollobj" style="background: #f1f1f1;">
+                <div class="textb">
+                    <input type="text" placeholder="Enter name">
+                </div>
+
+                <div class="textb">
+                    <input type="text" placeholder="Department">
+                </div>
+
+                <div class="textb">
+                    <input type="text" placeholder="Class">
+                </div>
+
+                <!--<div class="textb">
+                    <input type="text" placeholder="">
+                </div>-->
+
+                <div class="textb">
+                    <input type="text" placeholder="PID">
+                </div>
+
+                <div class="textb">
+                    <input type="text" placeholder="Enter the Position you wish to stand for">
+                </div>
+
+                <div class="textb">
+                    <input type="text" placeholder="Enter the promises">
+                </div>
+
+                <div class="textb">
+                    <input type="text" placeholder="Enter the phone no">
+                </div>
+
+            </div>
+
+        </div>
+
+        <input type="submit" class ="sbtn" value="SUBMIT">
+    </form>
+
+</body>
+
+</html>

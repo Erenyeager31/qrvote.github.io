@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      window.onload = function () {
+        var dataPoints1 = []
+        var dataPoints2 = []
+
+        var chart = new CanvasJS.Chart('chartContainer', {
+          zoomEnabled: true,
+          title: {
+            text: 'VOTE COUNT'
+          },
+          axisX: {
+            title: 'chart updates every 1 minute'
+          },
+          axisY: {
+            prefix: ''
+          },
+          toolTip: {
+            shared: true
+          },
+          legend: {
+            cursor: 'pointer',
+            verticalAlign: 'top',
+            fontSize: 22,
+            fontColor: 'dimGrey',
+            itemclick: toggleDataSeries
+          },
+          data: [
+            {
+              type: 'line',
+              xValueType: 'dateTime',
+              yValueFormatString: '####.00',
+              xValueFormatString: 'hh:mm:ss TT',
+              showInLegend: true,
+              name: 'Candidata A', //this is shown when we hover over the chart
+              dataPoints: dataPoints1
+            },
+            {
+              type: 'line',
+              xValueType: 'dateTime',
+              yValueFormatString: '####.00',	//format of the value shown when wen hover over the chart
+              showInLegend: true,
+              name: 'Candidate B', 
+              dataPoints: dataPoints2
+            }
+          ]
+        })
+
+        function toggleDataSeries(e) {
+          if (
+            typeof e.dataSeries.visible === 'undefined' ||
+            e.dataSeries.visible
+          ) {
+            e.dataSeries.visible = false
+          } else {
+            e.dataSeries.visible = true
+          }
+          chart.render()
+        }
+
+        var updateInterval = 60000
+        // initial value
+        var yValue1 = 1
+        var yValue2 = 1
+
+        var time = new Date()
+        // starting at 9.30 am
+        time.setHours(9)
+        time.setMinutes(30)
+        time.setSeconds(00)
+        time.setMilliseconds(00)
+
+        function updateChart(count) {
+          count = count || 1
+          var deltaY1, deltaY2
+          for (var i = 0; i < count; i++) {
+            time.setTime(time.getTime() + updateInterval)
+            //deltaY1 = .5 + Math.random() *(-.5-.5);
+            //deltaY2 = .5 + Math.random() *(-.5-.5);
+            deltaY1 = 0
+            deltaY2 = 0
+
+            // adding random value and rounding it to two digits.
+            //yValue1 = Math.round((yValue1 + deltaY1)*100)/100;
+            //yValue2 = Math.round((yValue2 + deltaY2)*100)/100;
+            yValue1 += 2 //defines the rate of change of the y coordinate
+            yValue2 += 2
+
+            // pushing the new values
+            dataPoints1.push({
+              //pushing the coords into the list
+              x: time.getTime(),
+              y: yValue1
+            })
+            dataPoints2.push({
+              x: time.getTime(),
+              y: yValue2
+            })
+          }
+
+          // updating legend text with  updated with y Value
+          chart.options.data[0].legendText = ' Candidate A ' + yValue1
+          chart.options.data[1].legendText = ' Candidate B ' + yValue2
+          chart.render()
+        }
+        // generates first set of dataPoints
+        updateChart(100)
+        setInterval(function () {
+          updateChart()
+        }, updateInterval)
+      }
+    </script>
+  </head>
+  <body>
+    <div id="chartContainer" style="height: 370px; width: 100%"></div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  </body>
+</html>
